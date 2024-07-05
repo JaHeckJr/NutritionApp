@@ -1,2 +1,2 @@
 # NutritionApp
-GitRepoForNutritionApp
+GitRepoForApp
