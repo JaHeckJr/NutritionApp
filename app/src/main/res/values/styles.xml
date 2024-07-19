@@ -1,0 +1,8 @@
+<resources>
+    <style name="CustomBottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="itemIconSize">32dp</item>
+        <item name="itemTextColor">@color/nav_item_color</item>
+        <item name="itemIconTint">@color/nav_item_color</item>
+        <item name="android:background">@drawable/curved_bottom_navigation</item>
+    </style>
+</resources>
