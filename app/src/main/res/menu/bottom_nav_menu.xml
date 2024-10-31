@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+    <item
+        android:id="@+id/learnFragment"
+        android:icon="@drawable/ic_learn"
+        android:title="Learn" />
+    <item
+        android:id="@+id/foodLogFragment"
+        android:icon="@drawable/ic_food_log"
+        android:title="Log Food" />
+    <item
+        android:id="@+id/otherFragment"
+        android:icon="@drawable/ic_other"
+        android:title="Other" />
+</menu>
