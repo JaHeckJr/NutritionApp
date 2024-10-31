@@ -1,0 +1,15 @@
+<!-- res/drawable/horizontal_progress_bar_steps.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <solid android:color="#E0E0E0" /> <!-- Light gray background color -->
+        </shape>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <solid android:color="#4CAF50" /> <!-- Green color for steps progress -->
+            </shape>
+        </clip>
+    </item>
+</layer-list>

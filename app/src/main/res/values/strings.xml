@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Existing strings -->
+    <string name="app_name">Nutrition App</string>
+    <string name="calories">Calories</string>
+    <string name="goal_icon">Goal Icon</string>
+    <string name="food_icon">Food Icon</string>
+    <string name="exercise_icon">Exercise Icon</string>
+    <string name="goal_value">Goal: 1,500</string>
+    <string name="food_value">Food: 1,009</string>
+    <string name="exercise_value">Exercise: 895</string>
+    <string name="get_started">Get Started</string>
+    <string name="daily_goal">Daily Goal</string>
+    <string name="calories_logged">Calories Logged</string>
+    <string name="calories_today">You have logged 1,356 calories today</string>
+
+    <!-- Updated/Added strings for HomeFragment -->
+    <string name="steps_progress">You have walked %1$d steps today</string>
+    <string name="exercise_progress">You have burned %1$d calories today</string>
+    <string name="calorie_summary">Goal: %1$d | Food: %2$d | Exercise: +%3$d | Remaining: %4$d</string>
+    <string name="remaining_format">%1$d\nRemaining</string>
+
+    <!-- Dialog strings -->
+    <string name="steps_current_hint">Current Steps</string>
+    <string name="steps_goal_hint">Steps Goal</string>
+    <string name="steps_dialog_description">Enter your current steps and daily goal</string>
+    <string name="exercise_current_hint">Calories Burned</string>
+    <string name="exercise_goal_hint">Exercise Goal</string>
+    <string name="exercise_dialog_description">Enter calories burned and daily exercise goal</string>
+    <string name="dialog_update">Update</string>
+    <string name="dialog_cancel">Cancel</string>
+
+    <!-- New strings needed for HomeFragment -->
+    <string name="steps_format">Steps: %1$d / %2$d</string>
+    <string name="exercise_format">Calories: %1$d / %2$d</string>
+    <string name="dialog_title_steps">Update Steps</string>
+    <string name="dialog_title_exercise">Update Exercise</string>
+    <string name="progress">Progress</string>
+    <string name="remaining">Remaining</string>
+
+    <!-- Remove if not needed -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

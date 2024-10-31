@@ -1,0 +1,22 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.nutritionapp.ui.HomeFragment"
+        android:label="Home" />
+    <fragment
+        android:id="@+id/learnFragment"
+        android:name="com.example.nutritionapp.ui.LearnFragment"
+        android:label="Learn" />
+    <fragment
+        android:id="@+id/foodLogFragment"
+        android:name="com.example.nutritionapp.ui.FoodLogFragment"
+        android:label="Log Food" />
+    <fragment
+        android:id="@+id/otherFragment"
+        android:name="com.example.nutritionapp.ui.OtherFragment"
+        android:label="Other" />
+</navigation>
