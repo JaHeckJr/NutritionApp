@@ -7,8 +7,8 @@ import com.example.nutritionapp.data.FoodItem
 import com.example.nutritionapp.data.MealType
 
 class CalorieViewModel : ViewModel() {
-    // Total calorie goal
-    private val _totalCalorieGoal = MutableLiveData(2000)
+    // Total calorie goal with no default value
+    private val _totalCalorieGoal = MutableLiveData<Int>()
     val totalCalorieGoal: LiveData<Int> = _totalCalorieGoal
 
     // Food items storage
@@ -19,23 +19,27 @@ class CalorieViewModel : ViewModel() {
     private val _caloriesConsumed = MutableLiveData(0)
     val caloriesConsumed: LiveData<Int> = _caloriesConsumed
 
-    // Exercise tracking
+    // Exercise tracking with exercise-specific goals
     private val _exerciseCalories = MutableLiveData(0)
     val exerciseCalories: LiveData<Int> = _exerciseCalories
 
-    private val _exerciseGoal = MutableLiveData(500)
+    private val _exerciseGoal = MutableLiveData(322)
     val exerciseGoal: LiveData<Int> = _exerciseGoal
 
     // Steps tracking
     private val _stepsWalked = MutableLiveData(0)
     val stepsWalked: LiveData<Int> = _stepsWalked
 
-    private val _stepsGoal = MutableLiveData(10000)
+    private val _stepsGoal = MutableLiveData(3444)
     val stepsGoal: LiveData<Int> = _stepsGoal
 
     // Remaining calories
-    private val _remainingCalories = MutableLiveData(calculateRemainingCalories())
+    private val _remainingCalories = MutableLiveData<Int>()
     val remainingCalories: LiveData<Int> = _remainingCalories
+
+    init {
+        updateRemainingCalories()
+    }
 
     // Food tracking functions
     fun addFoodItem(foodItem: FoodItem) {
@@ -60,12 +64,12 @@ class CalorieViewModel : ViewModel() {
 
     // Exercise tracking functions
     fun setExerciseCalories(calories: Int) {
-        _exerciseCalories.value = calories
-        updateRemainingCalories()
+        _exerciseCalories.value = calories.coerceAtLeast(0)
+        updateRemainingCalories() // Update remaining calories when exercise changes
     }
 
     fun setExerciseGoal(goal: Int) {
-        _exerciseGoal.value = goal
+        _exerciseGoal.value = goal.coerceAtLeast(0)
     }
 
     fun getExerciseProgress(): Float {
@@ -76,11 +80,11 @@ class CalorieViewModel : ViewModel() {
 
     // Steps tracking functions
     fun setStepsWalked(steps: Int) {
-        _stepsWalked.value = steps
+        _stepsWalked.value = steps.coerceAtLeast(0)
     }
 
     fun setStepsGoal(goal: Int) {
-        _stepsGoal.value = goal
+        _stepsGoal.value = goal.coerceAtLeast(0)
     }
 
     fun getStepsProgress(): Float {
@@ -91,19 +95,16 @@ class CalorieViewModel : ViewModel() {
 
     // Calorie goal functions
     fun setTotalCalorieGoal(goal: Int) {
-        _totalCalorieGoal.value = goal
+        _totalCalorieGoal.value = goal.coerceAtLeast(0)
         updateRemainingCalories()
     }
 
     private fun updateRemainingCalories() {
-        _remainingCalories.value = calculateRemainingCalories()
-    }
-
-    private fun calculateRemainingCalories(): Int {
         val goal = _totalCalorieGoal.value ?: 0
         val consumed = _caloriesConsumed.value ?: 0
         val exercise = _exerciseCalories.value ?: 0
-        return goal - consumed + exercise
+        // Subtract both consumed calories and exercise calories from goal
+        _remainingCalories.value = (goal - consumed - exercise).coerceAtLeast(0)
     }
 
     // Meal type functions
@@ -129,5 +130,27 @@ class CalorieViewModel : ViewModel() {
         val current = _exerciseCalories.value ?: 0
         val goal = _exerciseGoal.value ?: 0
         return (goal - current).coerceAtLeast(0)
+    }
+
+    // Helper function to check if calorie goal is set
+    fun isCalorieGoalSet(): Boolean {
+        return _totalCalorieGoal.value != null
+    }
+
+    // Reset functions
+    fun resetDailyProgress() {
+        _caloriesConsumed.value = 0
+        _exerciseCalories.value = 0
+        _stepsWalked.value = 0
+        _foodItems.value = emptyList()
+        updateRemainingCalories()
+    }
+
+    fun resetAll() {
+        resetDailyProgress()
+        _totalCalorieGoal.value = null
+        _exerciseGoal.value = 322
+        _stepsGoal.value = 3444
+        updateRemainingCalories()
     }
 }

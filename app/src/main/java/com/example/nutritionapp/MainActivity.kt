@@ -30,38 +30,31 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupCalorieTracking() {
-        // Observe total calorie goal for progress bar
-        calorieViewModel.totalCalorieGoal.observe(this) { goal ->
-            binding.calorieProgressBar.max = goal
-        }
-
-        // Observe calories consumed
-        calorieViewModel.caloriesConsumed.observe(this) { calories ->
-            binding.calorieProgressBar.progress = calories
-            updateCalorieText()
-        }
-
-        // Observe exercise calories
-        calorieViewModel.exerciseCalories.observe(this) {
-            updateCalorieText()
-        }
-
-        // Observe remaining calories
-        calorieViewModel.remainingCalories.observe(this) {
-            updateCalorieText()
-        }
+        // Observe all relevant data for the progress bar and text
+        calorieViewModel.totalCalorieGoal.observe(this) { updateCalorieText() }
+        calorieViewModel.caloriesConsumed.observe(this) { updateCalorieText() }
+        calorieViewModel.exerciseCalories.observe(this) { updateCalorieText() }
+        calorieViewModel.remainingCalories.observe(this) { updateCalorieText() }
     }
 
     private fun updateCalorieText() {
+        val goal = calorieViewModel.totalCalorieGoal.value ?: 2000
         val consumed = calorieViewModel.caloriesConsumed.value ?: 0
         val exercise = calorieViewModel.exerciseCalories.value ?: 0
         val remaining = calorieViewModel.remainingCalories.value ?: 0
 
-        binding.calorieTrackingLabel.text = "Calories Logged"
-        binding.calorieCountText.text =
-            "Goal: ${calorieViewModel.totalCalorieGoal.value} | " +
-                    "Food: $consumed | " +
-                    "Exercise: +$exercise | " +
-                    "Remaining: $remaining"
+        // Update the progress bar
+        binding.calorieProgressBar.max = goal
+        binding.calorieProgressBar.progress = consumed
+
+        // Update the labels
+        binding.calorieTrackingLabel.text = getString(R.string.calories_logged)
+        binding.calorieCountText.text = getString(
+            R.string.calorie_summary,
+            goal,
+            consumed,
+            exercise,
+            remaining
+        )
     }
 }

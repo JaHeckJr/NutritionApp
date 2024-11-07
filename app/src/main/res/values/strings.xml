@@ -14,9 +14,9 @@
     <string name="exercise_icon">Exercise Icon</string>
 
     <!-- Values -->
-    <string name="goal_value">Goal: 1,500</string>
-    <string name="food_value">Food: 1,009</string>
-    <string name="exercise_value">Exercise: 895</string>
+    <string name="goal_value">Goal: %1$d</string>
+    <string name="food_value">Food: %1$d</string>
+    <string name="exercise_value">Exercise: %1$d</string>
 
     <!-- Navigation -->
     <string name="get_started">Get Started</string>
@@ -24,13 +24,15 @@
 
     <!-- Status and Progress -->
     <string name="calories_logged">Calories Logged</string>
-    <string name="calories_today">You have logged 1,356 calories today</string>
+    <string name="calories_today">You have logged %1$d calories today</string>
     <string name="calorie_summary">Goal: %1$d | Food: %2$d | Exercise: +%3$d | Remaining: %4$d</string>
     <string name="remaining_format">%1$d\nRemaining</string>
+    <string name="progress_format">%1$d\n%2$s</string>
 
     <!-- Steps tracking -->
     <string name="steps_progress">You have walked %1$d steps today</string>
     <string name="steps_format">Steps: %1$d / %2$d</string>
+    <string name="steps_value_format">%1$d\nSteps</string>
     <string name="dialog_title_steps">Update Steps</string>
     <string name="steps_current_hint">Current Steps</string>
     <string name="steps_goal_hint">Steps Goal</string>
@@ -39,6 +41,7 @@
     <!-- Exercise tracking -->
     <string name="exercise_progress">You have burned %1$d calories today</string>
     <string name="exercise_format">Calories: %1$d / %2$d</string>
+    <string name="exercise_value_format">%1$d\nCal</string>
     <string name="dialog_title_exercise">Update Exercise</string>
     <string name="exercise_current_hint">Calories Burned</string>
     <string name="exercise_goal_hint">Exercise Goal</string>
